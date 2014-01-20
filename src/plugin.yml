@@ -1,9 +1,12 @@
 main: net.pravian.forcetime.ForceTime
 authors: [Prozza]
 name: ForceTime
-version: 2.0
+version: 2.1
 description: Set the time, permanently
 commands:
   forcetime:
     usage: /<command> <day | night | off>
     description: Set the time, permanently.
+  forceweather:
+    usage: /<command> <sun | rain | thunder>
+    description: Set the weather, permanently.

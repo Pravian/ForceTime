@@ -15,8 +15,13 @@ public class HeartBeat extends BukkitRunnable {
     @Override
     public void run() {
         for (World world : plugin.getServer().getWorlds()) {
-            if (plugin.state != TimeState.UNSET) {
-                WorldUtils.setWorldTime(world, plugin.state.getTicks());
+
+            if (plugin.timeState != TimeState.UNSET) {
+                WorldUtils.setTime(world, plugin.timeState.getTicks());
+            }
+
+            if (plugin.weatherState != WeatherState.UNSET) {
+                WorldUtils.setWeather(world, plugin.weatherState.getType());
             }
         }
     }

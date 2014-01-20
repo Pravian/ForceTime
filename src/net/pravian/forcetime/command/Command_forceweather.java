@@ -3,27 +3,27 @@ package net.pravian.forcetime.command;
 import net.pravian.bukkitlib.command.BukkitCommand;
 import net.pravian.bukkitlib.command.CommandPermissions;
 import net.pravian.forcetime.ForceTime;
-import net.pravian.forcetime.TimeState;
+import net.pravian.forcetime.WeatherState;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-@CommandPermissions(permission = "forcetime.set", usage = "/<command> <day | night | off>")
-public class Command_forcetime extends BukkitCommand<ForceTime> {
+@CommandPermissions(permission = "forcetime.setweather", usage = "/<command> <sun | rain | thunder>")
+public class Command_forceweather extends BukkitCommand<ForceTime> {
 
     @Override
-    public boolean run(CommandSender sender, Command command, String commandLabel, String[] args) {
+    protected boolean run(CommandSender sender, Command command, String commandLabel, String[] args) {
         if (args.length != 1) {
             return showUsage();
         }
 
-        for (TimeState state : TimeState.values()) {
+        for (WeatherState state : WeatherState.values()) {
             if (state.getName().equalsIgnoreCase(args[0])) {
 
-                plugin.timeState = state;
-                plugin.config.set("time", state.getName());
+                plugin.weatherState = state;
+                plugin.config.set("weather", state.getName());
                 plugin.config.save();
 
-                msg("ForceTime time set to: " + args[0]);
+                msg("ForceTime weather set to: " + args[0]);
                 return true;
             }
         }
