@@ -1,2 +1,4 @@
-time: 'off'
-weather: 'off'
+
+world:
+  time: 'off'
+  weather: 'off'
