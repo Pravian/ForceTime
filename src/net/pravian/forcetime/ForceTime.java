@@ -51,8 +51,8 @@ public class ForceTime extends BukkitPlugin {
             
             logger.info("Transferring config to new format...");
             
-            config.set("world.time", config.getString("time"));
-            config.set("world.weather", config.getString("weather"));
+            config.set(plugin.getServer().getWorlds().get(0).getName() + ".time", config.getString("time"));
+            config.set(plugin.getServer().getWorlds().get(0).getName() + ".weather", config.getString("weather"));
             
             config.set("time", null);
             config.set("weather", null);

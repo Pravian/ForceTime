@@ -3,8 +3,8 @@ package net.pravian.forcetime;
 import java.io.IOException;
 import java.util.EnumMap;
 import java.util.Map;
+import net.pravian.bukkitlib.metrics.FixedPlotter;
 import net.pravian.bukkitlib.metrics.Graph;
-import net.pravian.bukkitlib.metrics.IncrementalPlotter;
 import net.pravian.bukkitlib.metrics.Metrics;
 
 public class ForceTimeMetrics {
@@ -26,7 +26,7 @@ public class ForceTimeMetrics {
 
             final Graph timeGraph = metrics.createGraph("Time");
             for (final TimeState time : timeCount.keySet()) {
-                timeGraph.addPlotter(new IncrementalPlotter(time.getName(), timeCount.get(time)));
+                timeGraph.addPlotter(new FixedPlotter(time.getName(), timeCount.get(time)));
             }
             // Time - End
 
@@ -43,7 +43,7 @@ public class ForceTimeMetrics {
 
             final Graph weatherGraph = metrics.createGraph("Weather");
             for (final WeatherState weather : weatherCount.keySet()) {
-                weatherGraph.addPlotter(new IncrementalPlotter(weather.getName(), weatherCount.get(weather)));
+                weatherGraph.addPlotter(new FixedPlotter(weather.getName(), weatherCount.get(weather)));
             }
             // Weather - End
 
